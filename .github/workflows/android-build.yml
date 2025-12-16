@@ -9,8 +9,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      ANDROID_SDK_ROOT: ${{ runner.temp }}/android-sdk
-      GRADLE_USER_HOME: ${{ runner.temp }}/gradle
+      ANDROID_SDK_ROOT: /tmp/android-sdk
+      GRADLE_USER_HOME: /tmp/gradle
     steps:
       - name: Checkout
         uses: actions/checkout@v4

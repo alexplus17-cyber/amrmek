@@ -1,0 +1,400 @@
+﻿12-15 12:18:44.911 W/ReactNativeJS( 9802):     in AuthProvider (created by App)
+12-15 12:18:44.911 W/ReactNativeJS( 9802):     in QueryClientProvider (created by PersistQueryClientProvider)
+12-15 12:18:44.911 W/ReactNativeJS( 9802):     in PersistQueryClientProvider (created by App)
+12-15 12:18:44.911 W/ReactNativeJS( 9802):     in StripeProvider (created by App)
+12-15 12:18:44.911 W/ReactNativeJS( 9802):     in App (created by withDevTools(App))
+12-15 12:18:44.911 W/ReactNativeJS( 9802):     in withDevTools(App)
+12-15 12:18:44.911 W/ReactNativeJS( 9802):     in RCTView (created by View)
+12-15 12:18:44.911 W/ReactNativeJS( 9802):     in View (created by AppContainer)
+12-15 12:18:44.911 W/ReactNativeJS( 9802):     in RCTView (created by View)
+12-15 12:18:44.911 W/ReactNativeJS( 9802):     in View (created by AppContainer)
+12-15 12:18:44.911 W/ReactNativeJS( 9802):     in AppContainer
+12-15 12:18:44.911 W/ReactNativeJS( 9802):     in main(RootComponent)
+12-15 12:18:44.954 E/ReactNativeJS( 9802): Error: Rendered more hooks than during the previous render.
+12-15 12:18:44.954 E/ReactNativeJS( 9802): 
+12-15 12:18:44.954 E/ReactNativeJS( 9802): This error is located at:
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in DashboardScreen (created by SceneView)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in StaticContainer
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in EnsureSingleNavigator (created by SceneView)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in SceneView (created by SceneView)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in RCTView (created by View)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in View (created by DebugContainer)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in DebugContainer (created by MaybeNestedStack)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in MaybeNestedStack (created by SceneView)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in RCTView (created by View)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in View (created by SceneView)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in RNSScreen (created by Animated(Anonymous))
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in Animated(Anonymous) (created by InnerScreen)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in Suspender (created by Freeze)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in Suspense (created by Freeze)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in Freeze (created by DelayedFreeze)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in DelayedFreeze (created by InnerScreen)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in InnerScreen (created by Screen)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in Screen (created by SceneView)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in SceneView (created by NativeStackViewInner)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in Suspender (created by Freeze)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in Suspense (created by Freeze)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in Freeze (created by DelayedFreeze)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in DelayedFreeze (created by ScreenStack)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in RNSScreenStack (created by ScreenStack)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in ScreenStack (created by NativeStackViewInner)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in NativeStackViewInner (created by NativeStackView)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in RNCSafeAreaProvider (created by SafeAreaProvider)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in SafeAreaProvider (created by SafeAreaProviderCompat)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in SafeAreaProviderCompat (created by NativeStackView)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in NativeStackView (created by NativeStackNavigator)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in PreventRemoveProvider (created by NavigationContent)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in NavigationContent
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in Unknown (created by NativeStackNavigator)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in NativeStackNavigator (created by AppContent)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in EnsureSingleNavigator
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in BaseNavigationContainer
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in ThemeProvider
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in NavigationContainerInner (created by AppContent)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in AppContent (created by App)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in AuthProvider (created by App)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in QueryClientProvider (created by PersistQueryClientProvider)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in PersistQueryClientProvider (created by App)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in StripeProvider (created by App)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in App (created by withDevTools(App))
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in withDevTools(App)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in RCTView (created by View)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in View (created by AppContainer)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in RCTView (created by View)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in View (created by AppContainer)
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in AppContainer
+12-15 12:18:44.954 E/ReactNativeJS( 9802):     in main(RootComponent), js engine: hermes
+12-15 12:18:44.965 E/ReactNativeJS( 9802): Error: Rendered more hooks than during the previous render.
+12-15 12:18:44.965 E/ReactNativeJS( 9802): 
+12-15 12:18:44.965 E/ReactNativeJS( 9802): This error is located at:
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in DashboardScreen (created by SceneView)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in StaticContainer
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in EnsureSingleNavigator (created by SceneView)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in SceneView (created by SceneView)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in RCTView (created by View)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in View (created by DebugContainer)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in DebugContainer (created by MaybeNestedStack)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in MaybeNestedStack (created by SceneView)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in RCTView (created by View)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in View (created by SceneView)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in RNSScreen (created by Animated(Anonymous))
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in Animated(Anonymous) (created by InnerScreen)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in Suspender (created by Freeze)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in Suspense (created by Freeze)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in Freeze (created by DelayedFreeze)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in DelayedFreeze (created by InnerScreen)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in InnerScreen (created by Screen)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in Screen (created by SceneView)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in SceneView (created by NativeStackViewInner)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in Suspender (created by Freeze)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in Suspense (created by Freeze)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in Freeze (created by DelayedFreeze)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in DelayedFreeze (created by ScreenStack)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in RNSScreenStack (created by ScreenStack)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in ScreenStack (created by NativeStackViewInner)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in NativeStackViewInner (created by NativeStackView)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in RNCSafeAreaProvider (created by SafeAreaProvider)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in SafeAreaProvider (created by SafeAreaProviderCompat)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in SafeAreaProviderCompat (created by NativeStackView)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in NativeStackView (created by NativeStackNavigator)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in PreventRemoveProvider (created by NavigationContent)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in NavigationContent
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in Unknown (created by NativeStackNavigator)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in NativeStackNavigator (created by AppContent)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in EnsureSingleNavigator
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in BaseNavigationContainer
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in ThemeProvider
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in NavigationContainerInner (created by AppContent)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in AppContent (created by App)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in AuthProvider (created by App)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in QueryClientProvider (created by PersistQueryClientProvider)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in PersistQueryClientProvider (created by App)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in StripeProvider (created by App)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in App (created by withDevTools(App))
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in withDevTools(App)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in RCTView (created by View)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in View (created by AppContainer)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in RCTView (created by View)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in View (created by AppContainer)
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in AppContainer
+12-15 12:18:44.965 E/ReactNativeJS( 9802):     in main(RootComponent), js engine: hermes
+12-15 12:21:42.239 W/ReactNativeJS( 9802): Cannot connect to Metro.
+12-15 12:21:42.239 W/ReactNativeJS( 9802): 
+12-15 12:21:42.239 W/ReactNativeJS( 9802): Try the following to fix the issue:
+12-15 12:21:42.239 W/ReactNativeJS( 9802): - Ensure that Metro is running and available on the same network
+12-15 12:21:42.239 W/ReactNativeJS( 9802): - Ensure that your device/emulator is connected to your machine and has USB debugging enabled - run 'adb devices' to see a list of connected devices
+12-15 12:21:42.239 W/ReactNativeJS( 9802): - If you're on a physical device connected to the same machine, run 'adb reverse tcp:8081 tcp:8081' to forward requests from your device
+12-15 12:21:42.239 W/ReactNativeJS( 9802): - If your device is on the same Wi-Fi network, set 'Debug server host & port for device' in 'Dev settings' to your machine's IP address and the port of the local dev server - e.g. 10.0.1.1:8081
+12-15 12:21:42.239 W/ReactNativeJS( 9802): 
+12-15 12:21:42.239 W/ReactNativeJS( 9802): URL: nqlwtzs-amrmek-8083.exp.direct:80
+12-15 12:21:42.239 W/ReactNativeJS( 9802): 
+12-15 12:21:42.239 W/ReactNativeJS( 9802): Error: null
+12-15 12:24:31.893 I/ReactNativeJS( 9802): Running "main" with {"initialProps":{"exp":{"initialUri":"exp://nqlwtzs-amrmek-8083.exp.direct","shell":false,"manifestString":"{\"id\":\"34fdb7fa-e46e-4ae6-ac32-7075fac0c703\",\"createdAt\":\"2025-12-15T20:23:35.762Z\",\"runtimeVersion\":\"exposdk:51.0.0\",\"launchAsset\":{\"key\":\"bundle\",\"contentType\":\"application\\/javascript\",\"url\":\"http:\\/\\/nqlwtzs-amrmek-8083.exp.direct\\/node_modules%5Cexpo%5CAppEntry.bundle?platform=android&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=true&transform.routerRoot=app\"},\"assets\":[],\"metadata\":{},\"extra\":{\"eas\":{},\"expoClient\":{\"name\":\"Investor Network\",\"slug\":\"investor-network-mobile\",\"scheme\":\"investornetwork\",\"version\":\"1.0.0\",\"orientation\":\"portrait\",\"updates\":{\"fallbackToCacheTimeout\":0},\"assetBundlePatterns\":[\"**\\/*\"],\"ios\":{\"supportsTablet\":true},\"android\":{\"package\":\"com.amrmek.investornetworkmobile\"},\"web\":{},\"extra\":{},\"_internal\":{\"isDebug\":false,\"projectRoot\":\"D:\\\\xampp\\\\htdocs\\\\word\\\\wp-content\\\\plugins\\\\investor-network-mobile\\\\mobile\",\"dynamicConfigPath\":\"D:\\\\xampp\\\\htdocs\\\\word\\\\wp-content\\\\plugins\\\\investor-network-mobile\\\\mobile\\\\app.config.js\",\"staticConfigPath\":null,\"packageJsonPath\":\"D:\\\\xampp\\\\htdocs\\\\word\\\\wp-content\\\\plugins\\\\investor-network-mobile\\\\mobile\\\\package.json\"},\"sdkVersion\":\"51.0.0\",\"platforms\":[\"ios\",\"android\",\"web\"],\"hostUri\":\"nqlwtzs-amrmek-8083.exp.direct\"},\"expoGo\":{\"debuggerHost\":\"nqlwtzs-amrmek-8083.exp.direct\",\"developer\":{\"tool\":\"expo-cli\",\"projectRoot\":\"D:\\\\xampp\\\\htdocs\\\\word\\\\wp-content\\\\plugins\\\\investor-network-mobile\\\\mobile\"},\"packagerOpts\":{\"dev\":true},\"mainModuleName\":\"node_modules\\\\expo\\\\AppEntry\",\"__flipperHack\":\"React Native packager is running\"},\"scopeKey\":\"@anonymous\\/investor-network-mobile-18cc42d4-69c7-47dc-a4d1-cdecb3323ca8\"},\"isVerified\":true}"}},"rootTag":131}
+12-15 12:28:09.139 W/ReactNativeJS( 9802): Cannot connect to Metro.
+12-15 12:28:09.139 W/ReactNativeJS( 9802): 
+12-15 12:28:09.139 W/ReactNativeJS( 9802): Try the following to fix the issue:
+12-15 12:28:09.139 W/ReactNativeJS( 9802): - Ensure that Metro is running and available on the same network
+12-15 12:28:09.139 W/ReactNativeJS( 9802): - Ensure that your device/emulator is connected to your machine and has USB debugging enabled - run 'adb devices' to see a list of connected devices
+12-15 12:28:09.139 W/ReactNativeJS( 9802): - If you're on a physical device connected to the same machine, run 'adb reverse tcp:8081 tcp:8081' to forward requests from your device
+12-15 12:28:09.139 W/ReactNativeJS( 9802): - If your device is on the same Wi-Fi network, set 'Debug server host & port for device' in 'Dev settings' to your machine's IP address and the port of the local dev server - e.g. 10.0.1.1:8081
+12-15 12:28:09.139 W/ReactNativeJS( 9802): 
+12-15 12:28:09.139 W/ReactNativeJS( 9802): URL: nqlwtzs-amrmek-8083.exp.direct:80
+12-15 12:28:09.139 W/ReactNativeJS( 9802): 
+12-15 12:28:09.139 W/ReactNativeJS( 9802): Error: null
+12-15 12:28:34.491 E/ReactNativeJS(11182): Error: Exception in HostObject::get for prop 'UIManager': java.lang.NullPointerException, js engine: hermes
+12-15 12:28:34.673 E/ReactNativeJS(11182): Error: Exception in HostObject::get for prop 'UIManager': java.lang.NullPointerException, js engine: hermes
+12-15 12:35:28.775 D/AndroidRuntime(11404): >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+12-15 12:35:28.850 I/AndroidRuntime(11404): Using default boot image
+12-15 12:35:28.850 I/AndroidRuntime(11404): Leaving lock profiling enabled
+12-15 12:35:29.628 D/AndroidRuntime(11404): Calling main entry com.android.commands.monkey.Monkey
+12-15 12:35:30.309 I/AndroidRuntime(11404): VM exiting with result code 0.
+12-15 12:35:30.441 D/AndroidRuntime(11182): Shutting down VM
+12-15 12:35:30.441 E/AndroidRuntime(11182): FATAL EXCEPTION: main
+12-15 12:35:30.441 E/AndroidRuntime(11182): Process: host.exp.exponent, PID: 11182
+12-15 12:35:30.441 E/AndroidRuntime(11182): java.lang.IllegalStateException: Unable to attach a rootView to ReactInstance when UIManager is not properly initialized.
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at com.facebook.react.ReactInstanceManager.attachRootViewToInstance(SourceFile:136)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at com.facebook.react.ReactInstanceManager.attachRootView(SourceFile:33)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at com.facebook.react.ReactRootView.attachToReactInstanceManager(SourceFile:80)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at com.facebook.react.ReactRootView.onMeasure(SourceFile:156)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.view.View.measure(View.java:25773)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:6980)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.widget.FrameLayout.onMeasure(FrameLayout.java:194)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.view.View.measure(View.java:25773)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:6980)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.widget.FrameLayout.onMeasure(FrameLayout.java:194)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.view.View.measure(View.java:25773)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:6980)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.widget.FrameLayout.onMeasure(FrameLayout.java:194)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at androidx.appcompat.widget.ContentFrameLayout.onMeasure(SourceFile:155)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.view.View.measure(View.java:25773)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:6980)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.widget.LinearLayout.measureChildBeforeLayout(LinearLayout.java:1552)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.widget.LinearLayout.measureVertical(LinearLayout.java:842)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.widget.LinearLayout.onMeasure(LinearLayout.java:721)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.view.View.measure(View.java:25773)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:6980)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.widget.FrameLayout.onMeasure(FrameLayout.java:194)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.view.View.measure(View.java:25773)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:6980)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.widget.LinearLayout.measureChildBeforeLayout(LinearLayout.java:1552)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.widget.LinearLayout.measureVertical(LinearLayout.java:842)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.widget.LinearLayout.onMeasure(LinearLayout.java:721)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.view.View.measure(View.java:25773)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:6980)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.widget.FrameLayout.onMeasure(FrameLayout.java:194)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at com.android.internal.policy.DecorView.onMeasure(DecorView.java:761)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.view.View.measure(View.java:25773)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.view.ViewRootImpl.performMeasure(ViewRootImpl.java:3611)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.view.ViewRootImpl.measureHierarchy(ViewRootImpl.java:2407)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.view.ViewRootImpl.performTraversals(ViewRootImpl.java:2677)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.view.ViewRootImpl.doTraversal(ViewRootImpl.java:2126)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.view.ViewRootImpl$TraversalRunnable.run(ViewRootImpl.java:8658)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.view.Choreographer$CallbackRecord.run(Choreographer.java:1037)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.view.Choreographer.doCallbacks(Choreographer.java:845)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.view.Choreographer.doFrame(Choreographer.java:780)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.view.Choreographer$FrameDisplayEventReceiver.run(Choreographer.java:1022)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.os.Handler.handleCallback(Handler.java:938)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.os.Handler.dispatchMessage(Handler.java:99)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.os.Looper.loopOnce(Looper.java:201)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.os.Looper.loop(Looper.java:288)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at android.app.ActivityThread.main(ActivityThread.java:7839)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at java.lang.reflect.Method.invoke(Native Method)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:548)
+12-15 12:35:30.441 E/AndroidRuntime(11182): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1003)
+12-15 12:35:37.093 E/ReactNativeJS(11428): Error: Exception in HostObject::get for prop 'UIManager': java.lang.NullPointerException, js engine: hermes
+12-15 12:35:37.163 E/ReactNativeJS(11428): Error: Exception in HostObject::get for prop 'UIManager': java.lang.NullPointerException, js engine: hermes
+12-15 12:36:22.651 I/ReactNativeJS(11428): Running "main" with {"initialProps":{"exp":{"initialUri":"exp://127.0.0.1:8083","shell":false,"manifestString":"{\"id\":\"96dbe1c1-2e94-4cf4-8f39-994796e8ba47\",\"createdAt\":\"2025-12-15T20:35:46.643Z\",\"runtimeVersion\":\"exposdk:51.0.0\",\"launchAsset\":{\"key\":\"bundle\",\"contentType\":\"application\\/javascript\",\"url\":\"http:\\/\\/127.0.0.1:8083\\/node_modules%5Cexpo%5CAppEntry.bundle?platform=android&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=true&transform.routerRoot=app\"},\"assets\":[],\"metadata\":{},\"extra\":{\"eas\":{},\"expoClient\":{\"name\":\"Investor Network\",\"slug\":\"investor-network-mobile\",\"scheme\":\"investornetwork\",\"version\":\"1.0.0\",\"orientation\":\"portrait\",\"updates\":{\"fallbackToCacheTimeout\":0},\"assetBundlePatterns\":[\"**\\/*\"],\"ios\":{\"supportsTablet\":true},\"android\":{\"package\":\"com.amrmek.investornetworkmobile\"},\"web\":{},\"extra\":{},\"_internal\":{\"isDebug\":false,\"projectRoot\":\"D:\\\\xampp\\\\htdocs\\\\word\\\\wp-content\\\\plugins\\\\investor-network-mobile\\\\mobile\",\"dynamicConfigPath\":\"D:\\\\xampp\\\\htdocs\\\\word\\\\wp-content\\\\plugins\\\\investor-network-mobile\\\\mobile\\\\app.config.js\",\"staticConfigPath\":null,\"packageJsonPath\":\"D:\\\\xampp\\\\htdocs\\\\word\\\\wp-content\\\\plugins\\\\investor-network-mobile\\\\mobile\\\\package.json\"},\"sdkVersion\":\"51.0.0\",\"platforms\":[\"ios\",\"android\",\"web\"],\"hostUri\":\"127.0.0.1:8083\"},\"expoGo\":{\"debuggerHost\":\"127.0.0.1:8083\",\"developer\":{\"tool\":\"expo-cli\",\"projectRoot\":\"D:\\\\xampp\\\\htdocs\\\\word\\\\wp-content\\\\plugins\\\\investor-network-mobile\\\\mobile\"},\"packagerOpts\":{\"dev\":true},\"mainModuleName\":\"node_modules\\\\expo\\\\AppEntry\",\"__flipperHack\":\"React Native packager is running\"},\"scopeKey\":\"@anonymous\\/investor-network-mobile-18cc42d4-69c7-47dc-a4d1-cdecb3323ca8\"},\"isVerified\":true}"}},"rootTag":11}
+12-15 12:36:25.019 D/AndroidRuntime(11428): Shutting down VM
+12-15 12:36:25.019 E/AndroidRuntime(11428): FATAL EXCEPTION: main
+12-15 12:36:25.019 E/AndroidRuntime(11428): Process: host.exp.exponent, PID: 11428
+12-15 12:36:25.019 E/AndroidRuntime(11428): java.lang.IllegalStateException: Unable to attach a rootView to ReactInstance when UIManager is not properly initialized.
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at com.facebook.react.ReactInstanceManager.attachRootViewToInstance(SourceFile:136)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at com.facebook.react.ReactInstanceManager.attachRootView(SourceFile:33)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at com.facebook.react.ReactRootView.attachToReactInstanceManager(SourceFile:80)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at com.facebook.react.ReactRootView.onMeasure(SourceFile:156)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.view.View.measure(View.java:25773)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:6980)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.widget.FrameLayout.onMeasure(FrameLayout.java:194)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.view.View.measure(View.java:25773)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:6980)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.widget.FrameLayout.onMeasure(FrameLayout.java:194)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.view.View.measure(View.java:25773)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:6980)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.widget.FrameLayout.onMeasure(FrameLayout.java:194)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at androidx.appcompat.widget.ContentFrameLayout.onMeasure(SourceFile:155)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.view.View.measure(View.java:25773)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:6980)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.widget.LinearLayout.measureChildBeforeLayout(LinearLayout.java:1552)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.widget.LinearLayout.measureVertical(LinearLayout.java:842)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.widget.LinearLayout.onMeasure(LinearLayout.java:721)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.view.View.measure(View.java:25773)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:6980)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.widget.FrameLayout.onMeasure(FrameLayout.java:194)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.view.View.measure(View.java:25773)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:6980)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.widget.LinearLayout.measureChildBeforeLayout(LinearLayout.java:1552)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.widget.LinearLayout.measureVertical(LinearLayout.java:842)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.widget.LinearLayout.onMeasure(LinearLayout.java:721)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.view.View.measure(View.java:25773)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.view.ViewGroup.measureChildWithMargins(ViewGroup.java:6980)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.widget.FrameLayout.onMeasure(FrameLayout.java:194)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at com.android.internal.policy.DecorView.onMeasure(DecorView.java:761)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.view.View.measure(View.java:25773)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.view.ViewRootImpl.performMeasure(ViewRootImpl.java:3611)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.view.ViewRootImpl.measureHierarchy(ViewRootImpl.java:2407)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.view.ViewRootImpl.performTraversals(ViewRootImpl.java:2677)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.view.ViewRootImpl.doTraversal(ViewRootImpl.java:2126)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.view.ViewRootImpl$TraversalRunnable.run(ViewRootImpl.java:8658)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.view.Choreographer$CallbackRecord.run(Choreographer.java:1037)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.view.Choreographer.doCallbacks(Choreographer.java:845)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.view.Choreographer.doFrame(Choreographer.java:780)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.view.Choreographer$FrameDisplayEventReceiver.run(Choreographer.java:1022)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.os.Handler.handleCallback(Handler.java:938)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.os.Handler.dispatchMessage(Handler.java:99)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.os.Looper.loopOnce(Looper.java:201)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.os.Looper.loop(Looper.java:288)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at android.app.ActivityThread.main(ActivityThread.java:7839)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at java.lang.reflect.Method.invoke(Native Method)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:548)
+12-15 12:36:25.019 E/AndroidRuntime(11428): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1003)
+12-15 12:37:35.414 I/ReactNativeJS(11625): Running "main
+12-15 12:37:35.437 I/ReactNative(11625): [GESTURE HANDLER] Initialize gesture handler for root view versioned.host.exp.exponent.ReactUnthemedRootView{76c720d V.E...... ......ID 0,0-1080,2148 #b}
+12-15 12:37:38.603 I/ReactNative(11625): [GESTURE HANDLER] Gesture handler is already enabled for a parent view
+12-15 12:37:38.606 I/ReactNative(11625): [GESTURE HANDLER] Gesture handler is already enabled for a parent view
+12-15 12:37:38.633 I/ReactNative(11625): [GESTURE HANDLER] Gesture handler is already enabled for a parent view
+12-15 12:38:06.863 I/ReactNativeJS(11625): Running "main" with {"initialProps":{"exp":{"initialUri":"exp://127.0.0.1:8083","shell":false,"manifestString":"{\"id\":\"d8d02598-cb7b-4640-8805-d54d0eb5bd08\",\"createdAt\":\"2025-12-15T20:38:05.433Z\",\"runtimeVersion\":\"exposdk:51.0.0\",\"launchAsset\":{\"key\":\"bundle\",\"contentType\":\"application\\/javascript\",\"url\":\"http:\\/\\/127.0.0.1:8083\\/node_modules%5Cexpo%5CAppEntry.bundle?platform=android&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=true&transform.routerRoot=app\"},\"assets\":[],\"metadata\":{},\"extra\":{\"eas\":{},\"expoClient\":{\"name\":\"Investor Network\",\"slug\":\"investor-network-mobile\",\"scheme\":\"investornetwork\",\"version\":\"1.0.0\",\"orientation\":\"portrait\",\"updates\":{\"fallbackToCacheTimeout\":0},\"assetBundlePatterns\":[\"**\\/*\"],\"ios\":{\"supportsTablet\":true},\"android\":{\"package\":\"com.amrmek.investornetworkmobile\"},\"web\":{},\"extra\":{},\"_internal\":{\"isDebug\":false,\"projectRoot\":\"D:\\\\xampp\\\\htdocs\\\\word\\\\wp-content\\\\plugins\\\\investor-network-mobile\\\\mobile\",\"dynamicConfigPath\":\"D:\\\\xampp\\\\htdocs\\\\word\\\\wp-content\\\\plugins\\\\investor-network-mobile\\\\mobile\\\\app.config.js\",\"staticConfigPath\":null,\"packageJsonPath\":\"D:\\\\xampp\\\\htdocs\\\\word\\\\wp-content\\\\plugins\\\\investor-network-mobile\\\\mobile\\\\package.json\"},\"sdkVersion\":\"51.0.0\",\"platforms\":[\"ios\",\"android\",\"web\"],\"hostUri\":\"127.0.0.1:8083\"},\"expoGo\":{\"debuggerHost\":\"127.0.0.1:8083\",\"developer\":{\"tool\":\"expo-cli\",\"projectRoot\":\"D:\\\\xampp\\\\htdocs\\\\word\\\\wp-content\\\\plugins\\\\investor-network-mobile\\\\mobile\"},\"packagerOpts\":{\"dev\":true},\"mainModuleName\":\"node_modules\\\\expo\\\\AppEntry\",\"__flipperHack\":\"React Native packager is running\"},\"scopeKey\":\"@anonymous\\/investor-network-mobile-18cc42d4-69c7-47dc-a4d1-cdecb3323ca8\"},\"isVerified\":true}"}},"rootTag":31}
+12-15 12:38:09.186 I/ReactNativeJS(11625): Running "HomeMenu
+12-15 12:38:09.223 I/ReactNative(11625): [GESTURE HANDLER] Initialize gesture handler for root view versioned.host.exp.exponent.ReactUnthemedRootView{4a17572 V.E...... ......ID 0,0-1080,2148 #3d}
+12-15 12:38:23.887 W/ReactNativeJS(11625): Clipboard has been extracted from react-native core and will be removed in a future release. It can now be installed and imported from '@react-native-clipboard/clipboard' instead of 'react-native'. See https://github.com/react-native-clipboard/clipboard
+12-15 12:39:04.338 E/ReactNativeJS(11625): 'API response error:', 'Request failed with status code 403'
+12-15 12:39:04.354 E/ReactNativeJS(11625): 'Error details:', { message: 'Request failed with status code 403',
+12-15 12:39:04.354 E/ReactNativeJS(11625):   name: 'AxiosError',
+12-15 12:39:04.354 E/ReactNativeJS(11625):   description: undefined,
+12-15 12:39:04.354 E/ReactNativeJS(11625):   number: undefined,
+12-15 12:39:04.354 E/ReactNativeJS(11625):   fileName: undefined,
+12-15 12:39:04.354 E/ReactNativeJS(11625):   lineNumber: undefined,
+12-15 12:39:04.354 E/ReactNativeJS(11625):   columnNumber: undefined,
+12-15 12:39:04.354 E/ReactNativeJS(11625):   stack: 'AxiosError: Request failed with status code 403\n    at settle (http://127.0.0.1:8083/node_modules/expo/AppEntry.bundle//&platform=android&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=true&transform.routerRoot=app:156661:37)\n    at onloadend (http://127.0.0.1:8083/node_modules/expo/AppEntry.bundle//&platform=android&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=true&transform.routerRoot=app:156502:29)\n    at call (native)\n    at dispatchEvent (http://127.0.0.1:8083/node_modules/expo/AppEntry.bundle//&platform=android&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=true&transform.routerRoot=app:51034:31)\n    at setReadyState (http://127.0.0.1:8083/node_modules/expo/AppEntry.bundle//&platform=android&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=true&transform.routerRoot=app:50246:29)\n    at __didCompleteResponse (http://127.0.0.1:8083/node_modules/expo/AppEntry.bundle//&platform=android&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=true&transform.routerRoot=app:50023:29)\n    at apply (native)\n    at anonymous (http://127.0.0.1:8083/node_modules/expo/AppEntry.bundle//&platform=android&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=true&transform.routerRoot=app:50165:46)\n    at apply (native)\n    at emit (http://127.0.0.1:8083/node_modules/expo/AppEntry.bundle//&platform=android&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=true&transform.routerRoot=app:9232:40)\n    at apply (native)\n    at anonymous (http://127.0.0.1:8083/node_modules/expo/AppEntry.bundle//&platform=android&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=true&transform.routerRoot=app:9027:200)\n    at emit (http://127.0.0.1:8083/node_modules/expo/AppEntry.bundle//&platform=android&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=true&transform.routerRoot=app:9060:62)\n    at apply (native)\n    at __callFunction (http://127.0.0.1:8083/node_modules/expo/AppEntry.bundle//&platform=android&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=true&transform.routerRoot=app:8284:38)\n    at anonymous (http://127.0.0.1:8083/node_modules/expo/AppEntry.bundle//&platform=android&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=true&transform.routerRoot=app:8000:31)\n    at __guard (http://127.0.0.1:8083/node_modules/expo/AppEntry.bundle//&platform=android&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=true&transform.routerRoot=app:8217:15)\n    at callFunctionReturnFlushedQueue (http://127.0.0.1:8083/node_modules/expo/AppEntry.bundle//&platform=android&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=true&transform.routerRoot=app:7999:21)',
+12-15 12:39:04.354 E/ReactNativeJS(11625):   config: 
+12-15 12:39:04.354 E/ReactNativeJS(11625):    { transitional: 
+12-15 12:39:04.354 E/ReactNativeJS(11625):       { silentJSONParsing: true,
+12-15 12:39:04.354 E/ReactNativeJS(11625):         forcedJSONParsing: true,
+12-15 12:39:04.354 E/ReactNativeJS(11625):         clarifyTimeoutError: false },
+12-15 12:39:04.354 E/ReactNativeJS(11625):      adapter: [ 'xhr', 'http', 'fetch' ],
+12-15 12:39:04.354 E/ReactNativeJS(11625):      transformRequest: [ [Function: transformRequest] ],
+12-15 12:39:04.354 E/ReactNativeJS(11625):      transformResponse: [ [Function: transformResponse] ],
+12-15 12:39:04.354 E/ReactNativeJS(11625):      timeout: 0,
+12-15 12:39:04.354 E/ReactNativeJS(11625):      xsrfCookieName: 'XSRF-TOKEN',
+12-15 12:39:04.354 E/ReactNativeJS(11625):      xsrfHeaderName: 'X-XSRF-TOKEN',
+12-15 12:39:04.354 E/ReactNativeJS(11625):      maxContentLength: -1,
+12-15 12:39:04.354 E/ReactNativeJS(11625):      maxBodyLength: -1,
+12-15 12:39:04.354 E/ReactNativeJS(11625):      env: { FormData: [Function: FormData], Blob: [Function: Blob] },
+12-15 12:39:04.354 E/ReactNativeJS(11625):      validateStatus: [Function: validateStatus],
+12-15 12:39:04.354 E/ReactNativeJS(11625):      headers: 
+12-15 12:39:04.354 E/ReactNativeJS(11625):       { Accept: 'application/json, text/plain, */*',
+12-15 12:39:04.354 E/ReactNativeJS(11625):         'Content-Type': 'application/json' },
+12-15 12:39:04.354 E/ReactNativeJS(11625):      baseURL: 'http://10.0.2.2/word/wp-json',
+12-15 12:39:04.354 E/ReactNativeJS(11625):      method: 'post',
+12-15 12:39:04.354 E/ReactNativeJS(11625):      url: '/jwt-auth/v1/token',
+12-15 12:39:04.354 E/ReactNativeJS(11625):      data: '{"username":"exp://127.0.0.1:8083","password":"$wp$2y$10$LNfT6ZImUZ"}',
+12-15 12:39:04.354 E/ReactNativeJS(11625):      allowAbsoluteUrls: true },
+12-15 12:39:04.354 E/ReactNativeJS(11625):   code: 'ERR_BAD_REQUEST',
+12-15 12:39:04.354 E/ReactNativeJS(11625):   status: 403 }
+12-15 12:39:04.355 E/ReactNativeJS(11625): 'Response status/data:', 403, { code: '[jwt_auth] invalid_username',
+12-15 12:39:04.355 E/ReactNativeJS(11625):   message: '<strong>Error:</strong> The username <strong>exp://127.0.0.1:8083</strong> is not registered on this site. If you are unsure of your username, try your email address instead.',
+12-15 12:39:04.355 E/ReactNativeJS(11625):   data: { status: 403 } }
+12-15 12:39:04.452 E/ReactNativeJS(11625): 'Login error:', { data: 
+12-15 12:39:04.452 E/ReactNativeJS(11625):    { code: '[jwt_auth] invalid_username',
+12-15 12:39:04.452 E/ReactNativeJS(11625):      message: '<strong>Error:</strong> The username <strong>exp://127.0.0.1:8083</strong> is not registered on this site. If you are unsure of your username, try your email address instead.',
+12-15 12:39:04.452 E/ReactNativeJS(11625):      data: { status: 403 } },
+12-15 12:39:04.452 E/ReactNativeJS(11625):   status: 403,
+12-15 12:39:04.452 E/ReactNativeJS(11625):   statusText: undefined,
+12-15 12:39:04.452 E/ReactNativeJS(11625):   headers: 
+12-15 12:39:04.452 E/ReactNativeJS(11625):    { 'access-control-allow-credentials': 'true',
+12-15 12:39:04.452 E/ReactNativeJS(11625):      'access-control-allow-headers': 'Origin, Authorization, Content-Type, Accept, X-Requested-With, X-WP-Nonce',
+12-15 12:39:04.452 E/ReactNativeJS(11625):      'access-control-allow-methods': 'GET, POST, OPTIONS',
+12-15 12:39:04.452 E/ReactNativeJS(11625):      'access-control-allow-origin': 'http://localhost/word',
+12-15 12:39:04.452 E/ReactNativeJS(11625):      'access-control-expose-headers': 'X-WP-Total, X-WP-TotalPages, Link',
+12-15 12:39:04.452 E/ReactNativeJS(11625):      allow: 'POST',
+12-15 12:39:04.452 E/ReactNativeJS(11625):      connection: 'Keep-Alive',
+12-15 12:39:04.452 E/ReactNativeJS(11625):      'content-length': '254',
+12-15 12:39:04.452 E/ReactNativeJS(11625):      'content-type': 'application/json; charset=UTF-8',
+12-15 12:39:04.452 E/ReactNativeJS(11625):      date: 'Mon, 15 Dec 2025 20:39:03 GMT',
+12-15 12:39:04.452 E/ReactNativeJS(11625):      'keep-alive': 'timeout=5, max=100',
+12-15 12:39:04.452 E/ReactNativeJS(11625):      link: '<http://localhost/word/wp-json/>; rel="https://api.w.org/"',
+12-15 12:39:04.452 E/ReactNativeJS(11625):      server: 'Apache/2.4.58 (Win64) OpenSSL/3.1.3 PHP/8.2.12',
+12-15 12:39:04.452 E/ReactNativeJS(11625):      'x-content-type-options': 'nosniff',
+12-15 12:39:04.452 E/ReactNativeJS(11625):      'x-powered-by': 'PHP/8.2.12',
+12-15 12:39:04.452 E/ReactNativeJS(11625):      'x-robots-tag': 'noindex' },
+12-15 12:39:04.452 E/ReactNativeJS(11625):   config: 
+12-15 12:39:04.452 E/ReactNativeJS(11625):    { transitional: 
+12-15 12:39:04.452 E/ReactNativeJS(11625):       { silentJSONParsing: true,
+12-15 12:39:04.452 E/ReactNativeJS(11625):         forcedJSONParsing: true,
+12-15 12:39:04.452 E/ReactNativeJS(11625):         clarifyTimeoutError: false },
+12-15 12:39:04.452 E/ReactNativeJS(11625):      adapter: [ 'xhr', 'http', 'fetch' ],
+12-15 12:39:04.452 E/ReactNativeJS(11625):      transformRequest: [ [Function: transformRequest] ],
+12-15 12:39:04.452 E/ReactNativeJS(11625):      transformResponse: [ [Function: transformResponse] ],
+12-15 12:39:04.452 E/ReactNativeJS(11625):      timeout: 0,
+12-15 12:39:04.452 E/ReactNativeJS(11625):      xsrfCookieName: 'XSRF-TOKEN',
+12-15 12:39:04.452 E/ReactNativeJS(11625):      xsrfHeaderName: 'X-XSRF-TOKEN',
+12-15 12:39:04.452 E/ReactNativeJS(11625):      maxContentLength: -1,
+12-15 12:39:04.452 E/ReactNativeJS(11625):      maxBodyLength: -1,
+12-15 12:39:04.452 E/ReactNativeJS(11625):      env: { FormData: [Function: FormData], Blob: [Function: Blob] },
+12-15 12:39:04.452 E/ReactNativeJS(11625):      validateStatus: [Function: validateStatus],
+12-15 12:39:04.452 E/ReactNativeJS(11625):      headers: 
+12-15 12:39:04.452 E/ReactNativeJS(11625):       { Accept: 'application/json, text/plain, */*',
+12-15 12:39:04.452 E/ReactNativeJS(11625):         'Content-Type': 'application/json' },
+12-15 12:39:04.452 E/ReactNativeJS(11625):      baseURL: 'http://10.0.2.2/word/wp-json',
+12-15 12:39:04.452 E/ReactNativeJS(11625):      method: 'post',
+12-15 12:39:04.452 E/ReactNativeJS(11625):      url: '/jwt-auth/v1/token',
+12-15 12:39:04.452 E/ReactNativeJS(11625):      data: '{"username":"exp://127.0.0.1:8083","password":"$wp$2y$10$LNfT6ZImUZ"}',
+12-15 12:39:04.452 E/ReactNativeJS(11625):      allowAbsoluteUrls: true },
+12-15 12:39:04.452 E/ReactNativeJS(11625):   request: 
+12-15 12:39:04.452 E/ReactNativeJS(11625):    { UNSENT: 0,
+12-15 12:39:04.452 E/ReactNativeJS(11625):      OPENED: 1,
+12-15 12:39:04.452 E/ReactNativeJS(11625):      HEADERS_RECEIVED: 2,
+12-15 12:39:04.452 E/ReactNativeJS(11625):      LOADING: 3,
+12-15 12:39:04.452 E/ReactNativeJS(11625):      DONE: 4,
+12-15 12:39:04.452 E/ReactNativeJS(11625):      readyState: 4,
+12-15 12:39:04.452 E/ReactNativeJS(11625):      status: 403,
+12-15 12:39:04.452 E/ReactNativeJS(11625):      timeout: 0,
+12-15 12:39:04.452 E/ReactNativeJS(11625):      withCredentials: true,
+12-15 12:39:04.452 E/ReactNativeJS(11625):      upload: {},
+12-15 12:39:04.452 E/ReactNativeJS(11625):      _aborted: false,
+12-15 12:39:04.452 E/ReactNativeJS(11625):      _hasError: false,
+12-15 12:39:04.452 E/ReactNativeJS(11625):      _method: 'POST',
+12-15 12:39:04.452 E/ReactNativeJS(11625):      _perfKey: 'network_XMLHttpRequest_http://10.0.2.2/word/wp-json/jwt-auth/v1/token',
+12-15 12:39:04.452 E/ReactNativeJS(11625):      _response: '{"code":"[jwt_auth] invalid_username","message":"<strong>Error:<\\/strong> The username <strong>exp:\\/\\/127.0.0.1:8083<\\/strong> is not registered on this site. If you are unsure of your username, try your email address instead.","data":{"status":403}}',
+12-15 12:39:04.452 E/ReactNativeJS(11625):      _url: 'http://10.0.2.2/word/wp-json/jwt-auth/v1/token',
+12-15 12:39:04.452 E/ReactNativeJS(11625):      _timedOut: false,
+12-15 12:39:04.452 E/ReactNativeJS(11625):      _trackingName: 'unknown',
+12-15 12:39:04.452 E/ReactNativeJS(11625):      _incrementalEvents: false,
+12-15 12:39:04.452 E/ReactNativeJS(11625):      _performanceLogger: 
+12-15 12:39:04.452 E/ReactNativeJS(11625):       { _timespans: 
+12-15 12:39:04.452 E/ReactNativeJS(11625):          { 'network_XMLHttpRequest_http://10.0.2.2/word/wp-json/jwt-auth/v1/token': 
+12-15 12:39:04.452 E/ReactNativeJS(11625):             { startTime: 10672659.919814,
+12-15 12:39:04.452 E/ReactNativeJS(11625):               startExtras: undefined,
+12-15 12:39:04.452 E/ReactNativeJS(11625):               endExtras: undefined,
+12-15 12:39:04.452 E/ReactNativeJS(11625):               endTime: 10673701.184429,
+12-15 12:39:04.452 E/ReactNativeJS(11625):               totalTime: 1041.2646149992943 },
+12-15 12:39:04.452 E/ReactNativeJS(11625):            'network_XMLHttpRequest_http://127.0.0.1:8083/symbolicate': { startTime: 10673831.184201, startExtras: undefined } },
+12-15 12:39:04.452 E/ReactNativeJS(11625):         _extras: {},
+12-15 12:39:04.452 E/ReactNativeJS(11625):         _points: 
+12-15 12:39:04.452 E/ReactNativeJS(11625):          { initializeCore_start: 10615622.619103,
+12-15 12:39:04.452 E/ReactNativeJS(11625):            initializeCore_end: 10615863.884177 },
+12-15 12:39:04.452 E/ReactNativeJS(11625):         _pointExtras: {},
+12-15 12:39:04.452 E/ReactNativeJS(11625):         _closed: false },
+12-15 12:39:04.452 E/ReactNativeJS(11625):      responseHeaders: 
+12-15 12:39:04.452 E/ReactNativeJS(11625):       { 'Access-Control-Allow-Origin': 'http://localhost/word',
+12-15 12:39:04.452 E/ReactNativeJS(11625):         'X-Powered-By': 'PHP/8.2.12',
+12-15 12:39:04.452 E/ReactNativeJS(11625):         'Content-Length': '254',
+12-15 12:39:04.452 E/ReactNativeJS(11625):         Connection: 'Keep-Alive',
+12-15 12:39:04.452 E/ReactNativeJS(11625):         'Content-Type': 'application/json; charset=UTF-8',
+12-15 12:39:04.452 E/ReactNativeJS(11625):         Link: '<http://localhost/word/wp-json/>; rel="https://api.w.org/"',
+12-15 12:39:04.452 E/ReactNativeJS(11625):         Allow: 'POST',
+12-15 12:39:04.452 E/ReactNativeJS(11625):         'Access-Control-Allow-Headers': 'Origin, Authorization, Content-Type, Accept, X-Requested-With, X-WP-Nonce',
+12-15 12:39:04.452 E/ReactNativeJS(11625):         Date: 'Mon, 15 Dec 2025 20:39:03 GMT',
+12-15 12:39:04.453 E/ReactNativeJS(11625):         'Keep-Alive': 'timeout=5, max=100',
+12-15 12:39:04.453 E/ReactNativeJS(11625):         'X-Robots-Tag': 'noindex',
+12-15 12:39:04.453 E/ReactNativeJS(11625):         'Access-Cont
+12-15 12:40:04.005 I/ReactNativeJS(11625): Must use physical device for Push Notifications

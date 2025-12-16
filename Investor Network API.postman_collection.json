@@ -1,0 +1,516 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-7890-1234-abcdef123456",
+		"name": "Investor Network API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    pm.environment.set(\"authToken\", pm.response.json().token);",
+									"    pm.environment.set(\"refreshToken\", pm.response.json().refresh_token);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"member\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/wp-json/jwt-auth/v1/token",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"wp-json",
+								"jwt-auth",
+								"v1",
+								"token"
+							]
+						},
+						"description": "Log in with a WordPress username and password to receive a JWT. The test script will automatically save this token to an `authToken` environment variable."
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refresh_token\": \"{{refreshToken}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/wp-json/jwt-auth/v1/token/refresh",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"wp-json",
+								"jwt-auth",
+								"v1",
+								"token",
+								"refresh"
+							]
+						},
+						"description": "Uses the `refreshToken` from the environment to get a new auth token."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Listings",
+			"item": [
+				{
+					"name": "Get All Listings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/wp-json/investor-network/v1/listings",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"wp-json",
+								"investor-network",
+								"v1",
+								"listings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Listing Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/wp-json/investor-network/v1/listings/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"wp-json",
+								"investor-network",
+								"v1",
+								"listings",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Listing Availability",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/wp-json/investor-network/v1/listings/1/availability",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"wp-json",
+								"investor-network",
+								"v1",
+								"listings",
+								"1",
+								"availability"
+							]
+						},
+						"description": "Fetches just the share availability for a single listing."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payments & Invoices",
+			"item": [
+				{
+					"name": "Get My Invoices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/wp-json/investor-network/v1/invoices",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"wp-json",
+								"investor-network",
+								"v1",
+								"invoices"
+							]
+						},
+						"description": "Gets a list of invoices for the currently authenticated user."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Bank Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/wp-json/investor-network/v1/bank-details",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"wp-json",
+								"investor-network",
+								"v1",
+								"bank-details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Payment Intent (Stripe)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"listingId\": 1,\n    \"quantity\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/wp-json/investor-network/v1/stripe/create-payment-intent",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"wp-json",
+								"investor-network",
+								"v1",
+								"stripe",
+								"create-payment-intent"
+							]
+						},
+						"description": "Creates a Stripe Payment Intent on the server and returns the client secret."
+					},
+					"response": []
+				},
+				{
+					"name": "Record Purchase",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"quantity\": 2,\n    \"payment_method\": \"stripe\",\n    \"payment_payload\": {\n        \"payment_intent_id\": \"pi_xxxxxxxxxxxx\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/wp-json/investor-network/v1/listings/1/purchase",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"wp-json",
+								"investor-network",
+								"v1",
+								"listings",
+								"1",
+								"purchase"
+							]
+						},
+						"description": "Records a completed purchase on the server after successful payment."
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Receipt",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "receipt",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "comment",
+									"value": "Payment for INV-126",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/wp-json/investor-network/v1/invoices/inv_126/upload-receipt",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"wp-json",
+								"investor-network",
+								"v1",
+								"invoices",
+								"inv_126",
+								"upload-receipt"
+							]
+						},
+						"description": "Uploads a bank transfer receipt for a specific invoice."
+					},
+					"response": []
+				},
+				{
+					"name": "Mark Invoice Paid",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/wp-json/investor-network/v1/invoices/inv_125/mark-paid",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"wp-json",
+								"investor-network",
+								"v1",
+								"invoices",
+								"inv_125",
+								"mark-paid"
+							]
+						},
+						"description": "Allows a user to mark an invoice as paid (e.g., after a bank transfer). Server should verify."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get User Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/wp-json/investor-network/v1/user/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"wp-json",
+								"investor-network",
+								"v1",
+								"user",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User Profile",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fullName\": \"John Doe Updated\",\n    \"email\": \"member-updated@test.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/wp-json/investor-network/v1/user/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"wp-json",
+								"investor-network",
+								"v1",
+								"user",
+								"profile"
+							]
+						},
+						"description": "Updates the current user's profile. Uses POST for compatibility."
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Settings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/wp-json/investor-network/v1/user/settings",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"wp-json",
+								"investor-network",
+								"v1",
+								"user",
+								"settings"
+							]
+						},
+						"description": "Gets the current user's notification and other settings."
+					},
+					"response": []
+				},
+				{
+					"name": "Update User Settings",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"enableEmailNotifications\": false,\n    \"enablePushNotifications\": true,\n    \"notificationTopics\": {\n        \"newInvestments\": true,\n        \"qnaUpdates\": true,\n        \"monthlyDigest\": false\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/wp-json/investor-network/v1/user/settings",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"wp-json",
+								"investor-network",
+								"v1",
+								"user",
+								"settings"
+							]
+						},
+						"description": "Updates the current user's settings."
+					},
+					"response": []
+				},
+				{
+					"name": "Register Device Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"ExponentPushToken[xxxxxxxxxxxxxxxxxxxxxx]\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/wp-json/investor-network/v1/user/device-token",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"wp-json",
+								"investor-network",
+								"v1",
+								"user",
+								"device-token"
+							]
+						},
+						"description": "Registers a user's device token for push notifications."
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{authToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://your-wordpress-site.com",
+			"type": "string"
+		},
+		{
+			"key": "authToken",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "refreshToken",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

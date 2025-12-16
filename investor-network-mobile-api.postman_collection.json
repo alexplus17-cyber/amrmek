@@ -1,0 +1,74 @@
+{
+  "info": {
+    "name": "Investor Network Mobile API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Listings - list",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/wp-json/investor-network/v1/listings"
+      }
+    },
+    {
+      "name": "Listing - detail",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/wp-json/investor-network/v1/listings/:id"
+      }
+    },
+    {
+      "name": "Listing - availability",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/wp-json/investor-network/v1/listings/:id/availability"
+      }
+    },
+    {
+      "name": "Purchase listing",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt}}" }
+        ],
+        "body": { "mode": "raw", "raw": "{ \"quantity\": 1, \"payment_method\": \"stripe\" }" },
+        "url": "{{baseUrl}}/wp-json/investor-network/v1/listings/:id/purchase"
+      }
+    },
+    {
+      "name": "Create Stripe PaymentIntent",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "Authorization", "value": "Bearer {{jwt}}" } ],
+        "body": { "mode": "raw", "raw": "{ \"amount\": 100, \"currency\": \"usd\" }" },
+        "url": "{{baseUrl}}/wp-json/investor-network/v1/stripe/create-payment-intent"
+      }
+    },
+    {
+      "name": "Invoices",
+      "request": { "method": "GET", "header": [ { "key": "Authorization", "value": "Bearer {{jwt}}" } ], "url": "{{baseUrl}}/wp-json/investor-network/v1/invoices" }
+    },
+    {
+      "name": "Upload receipt",
+      "request": { "method": "POST", "header": [ { "key": "Authorization", "value": "Bearer {{jwt}}" } ], "body": { "mode": "formdata", "formdata": [ { "key": "receipt", "type": "file" }, { "key": "comment", "value": "Paid via bank", "type": "text" } ] }, "url": "{{baseUrl}}/wp-json/investor-network/v1/invoices/:id/upload-receipt" }
+    },
+    {
+      "name": "Mark invoice paid",
+      "request": { "method": "POST", "header": [ { "key": "Authorization", "value": "Bearer {{jwt}}" } ], "url": "{{baseUrl}}/wp-json/investor-network/v1/invoices/:id/mark-paid" }
+    },
+    {
+      "name": "Bank details",
+      "request": { "method": "GET", "url": "{{baseUrl}}/wp-json/investor-network/v1/bank-details" }
+    },
+    {
+      "name": "Device token",
+      "request": { "method": "POST", "header": [ { "key": "Authorization", "value": "Bearer {{jwt}}" } ], "body": { "mode": "raw", "raw": "{ \"token\": \"expo-device-token\", \"platform\": \"android\" }" }, "url": "{{baseUrl}}/wp-json/investor-network/v1/device-token" }
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost/word" },
+    { "key": "jwt", "value": "" }
+  ]
+}

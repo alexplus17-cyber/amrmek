@@ -1,0 +1,28 @@
+{
+    "baseCount":  0,
+    "uiRows":  [
+                   {
+                       "id":  10,
+                       "proposal_id":  1,
+                       "title":  "super super",
+                       "seller":  "John Smith",
+                       "available_quantity":  4,
+                       "unit_price":  1501
+                   }
+               ],
+    "proposal":  1,
+    "secondarySource":  [
+                            {
+                                "id":  10,
+                                "proposal_id":  1,
+                                "title":  "super super",
+                                "seller":  "John Smith",
+                                "available_quantity":  4,
+                                "unit_price":  1501
+                            }
+                        ],
+    "baseIds":  [
+                    "10"
+                ],
+    "mergedCount":  1
+}

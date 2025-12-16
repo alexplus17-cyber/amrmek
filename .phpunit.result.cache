@@ -1,0 +1,1 @@
+{"version":1,"defects":{"TestInvestorNetworkMobileAPI::test_get_listings_endpoint_registered":3,"TestInvestorNetworkMobileAPI::test_get_bank_details_returns_option":3},"times":{"TestInvestorNetworkMobileAPI::test_get_listings_endpoint_registered":0.025,"TestInvestorNetworkMobileAPI::test_get_bank_details_returns_option":0.022}}

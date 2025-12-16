@@ -1,0 +1,450 @@
+import React, { useEffect, useMemo, useState } from 'react';
+import Card from '../components/Card';
+import Spinner from '../components/Spinner';
+import { apiService } from '../services/apiService';
+import { Listing, Invoice } from '../types';
+import PurchaseModal from '../components/PurchaseModal';
+import Button from '../components/Button';
+import { useToast } from '../contexts/ToastContext';
+
+interface CartItem {
+    listing: Listing;
+    quantity: number;
+}
+
+interface PurchaseSharesScreenProps {
+    navigateBack: () => void;
+    onPurchaseSuccess?: (invoiceId: string) => void;
+}
+
+const currencyFormatter = (amount: number, currency = 'USD') => {
+    try {
+        return new Intl.NumberFormat(undefined, { style: 'currency', currency }).format(amount);
+    } catch (e) {
+        return `$${amount.toFixed(2)}`;
+    }
+};
+
+const getDeep = (obj: any, path: string) => {
+    try {
+        const parts = path.split('.');
+        let cur = obj;
+        for (const p of parts) {
+            if (cur == null) return undefined;
+            cur = cur[p];
+        }
+        return cur;
+    } catch (e) {
+        return undefined;
+    }
+};
+
+const getNumber = (obj: any, keys: string[]) => {
+    for (const k of keys) {
+        let v: any;
+        if (k.indexOf('.') !== -1) v = getDeep(obj, k);
+        else v = obj && (obj[k] !== undefined ? obj[k] : undefined);
+        if (v !== undefined && v !== null && v !== '') {
+            // If value is a string containing currency symbols or commas, clean it first
+            if (typeof v === 'string') {
+                // Remove any character that's not digit, dot, or minus
+                const cleaned = v.replace(/[^0-9.-]+/g, '');
+                const n = Number(cleaned);
+                if (!isNaN(n)) return n;
+            } else {
+                const n = Number(v);
+                if (!isNaN(n)) return n;
+            }
+        }
+    }
+    return 0;
+};
+
+const getString = (obj: any, keys: string[]) => {
+    for (const k of keys) {
+        let v: any;
+        if (k.indexOf('.') !== -1) v = getDeep(obj, k);
+        else v = obj && (obj[k] !== undefined ? obj[k] : undefined);
+        if (v !== undefined && v !== null && String(v).trim() !== '') return String(v);
+    }
+    return '';
+};
+
+/**
+ * Parse available quantity from a listing's various fields (quantity, items_json, meta_json).
+ * Returns a non-negative integer.
+ */
+const parseItemsJsonQuantity = (listing: any): number => {
+    try {
+        if (!listing) return 0;
+        // Prefer explicit quantity fields if present
+        const explicit = listing.quantity ?? listing.qty ?? listing.available ?? listing.availability;
+        if (explicit !== undefined && explicit !== null && explicit !== '') {
+            const n = Number(String(explicit).replace(/[^0-9.-]+/g, ''));
+            if (!isNaN(n) && n > 0) return Math.floor(n);
+        }
+
+        // Check items_json (may be HTML-escaped in DB as &quot;)
+        const itemsJsonRaw = listing.items_json ?? listing.itemsJson ?? listing.items ?? listing.itemsJsonRaw;
+        if (itemsJsonRaw) {
+            const raw = typeof itemsJsonRaw === 'string' ? itemsJsonRaw : JSON.stringify(itemsJsonRaw);
+            const normalized = raw.replace(/&quot;/g, '"');
+            const arr = JSON.parse(normalized);
+            if (Array.isArray(arr)) {
+                return arr.reduce((sum: number, it: any) => {
+                    const q = Number(it?.quantity ?? it?.qty ?? 0);
+                    return sum + (isNaN(q) ? 0 : Math.floor(q));
+                }, 0);
+            }
+        }
+
+        // Check meta_json for items
+        const metaRaw = listing.meta_json ?? listing.metaJson ?? listing.meta ?? listing.meta_raw;
+        if (metaRaw) {
+            const raw = typeof metaRaw === 'string' ? metaRaw : JSON.stringify(metaRaw);
+            const normalized = raw.replace(/&quot;/g, '"');
+            const meta = JSON.parse(normalized);
+            const items = meta?.items ?? meta?.items_json ?? meta?.itemsJson;
+            if (Array.isArray(items)) {
+                return items.reduce((sum: number, it: any) => {
+                    const q = Number(it?.quantity ?? it?.qty ?? 0);
+                    return sum + (isNaN(q) ? 0 : Math.floor(q));
+                }, 0);
+            }
+        }
+    } catch (e) {
+        // parsing failed – fall through to zero
+    }
+    return 0;
+};
+
+const getAvailable = (listing: any): number => {
+    // Prefer normalized server-side field when present
+    const serverAvail = getNumber(listing, ['available_quantity', 'availableQuantity', 'available_qty']);
+    if (serverAvail && serverAvail > 0) return serverAvail;
+    const parsed = parseItemsJsonQuantity(listing);
+    if (parsed && parsed > 0) return parsed;
+    return getNumber(listing, ['availability', 'available', 'qty', 'quantity', 'value.available']);
+};
+
+/**
+ * Determine a per-share price for a listing. Looks at top-level fields then falls back
+ * to parsing items_json / meta_json for an item-level price.
+ */
+const getListingPrice = (listing: any): number => {
+    try {
+        if (!listing) return 0;
+        // Prefer server-normalized unit_price if present
+        const serverUnit = getNumber(listing, ['unit_price', 'unitPrice', 'unitPriceValue']);
+        if (serverUnit && serverUnit > 0) return serverUnit;
+        // common top-level keys
+        const top = getNumber(listing, ['price_per_share', 'price', 'ask_price', 'value.price', 'unit_price']);
+        if (top && top > 0) return top;
+
+        // If items exist, use the first item's price (or average) if present
+        const itemsJsonRaw = listing.items_json ?? listing.itemsJson ?? listing.items ?? listing.itemsJsonRaw;
+        if (itemsJsonRaw) {
+            const raw = typeof itemsJsonRaw === 'string' ? itemsJsonRaw : JSON.stringify(itemsJsonRaw);
+            const normalized = raw.replace(/&quot;/g, '"');
+            const arr = JSON.parse(normalized);
+            if (Array.isArray(arr) && arr.length > 0) {
+                // prefer explicit numeric price fields on items
+                for (const it of arr) {
+                    const p = Number(it?.price ?? it?.price_per_share ?? it?.unit_price ?? 0);
+                    if (!isNaN(p) && p > 0) return p;
+                }
+                // fallback: if items have a total and quantities, compute per-item
+                const total = arr.reduce((s: number, it: any) => s + (Number(it?.price ?? 0) || 0), 0);
+                const qty = arr.reduce((s: number, it: any) => s + (Number(it?.quantity ?? it?.qty ?? 0) || 0), 0);
+                if (qty > 0 && total > 0) return Math.round((total / qty) * 100) / 100;
+            }
+        }
+
+        // meta_json
+        const metaRaw = listing.meta_json ?? listing.metaJson ?? listing.meta ?? listing.meta_raw;
+        if (metaRaw) {
+            const raw = typeof metaRaw === 'string' ? metaRaw : JSON.stringify(metaRaw);
+            const normalized = raw.replace(/&quot;/g, '"');
+            const meta = JSON.parse(normalized);
+            const items = meta?.items ?? meta?.items_json ?? meta?.itemsJson;
+            if (Array.isArray(items) && items.length > 0) {
+                for (const it of items) {
+                    const p = Number(it?.price ?? it?.price_per_share ?? 0);
+                    if (!isNaN(p) && p > 0) return p;
+                }
+                const total = items.reduce((s: number, it: any) => s + (Number(it?.price ?? 0) || 0), 0);
+                const qty = items.reduce((s: number, it: any) => s + (Number(it?.quantity ?? it?.qty ?? 0) || 0), 0);
+                if (qty > 0 && total > 0) return Math.round((total / qty) * 100) / 100;
+            }
+        }
+    } catch (e) {
+        // swallow parse errors
+    }
+    return 0;
+};
+
+const PurchaseSharesScreen: React.FC<PurchaseSharesScreenProps> = ({ navigateBack, onPurchaseSuccess }) => {
+    const [listings, setListings] = useState<Listing[]>([]);
+    const [proposals, setProposals] = useState<Listing[]>([]);
+    const [proposalAvail, setProposalAvail] = useState<Record<number, any>>({});
+    const [selectedProposals, setSelectedProposals] = useState<Record<number, number>>({});
+    const [sellerNames, setSellerNames] = useState<Record<number, string>>({});
+    const [secondaryListings, setSecondaryListings] = useState<Listing[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [search, setSearch] = useState('');
+    const [onlyAvailable, setOnlyAvailable] = useState(true);
+    const [sortKey, setSortKey] = useState<'price' | 'availability' | 'title'>('price');
+    const [cart, setCart] = useState<Record<number, CartItem>>({});
+    const [previewInvoice, setPreviewInvoice] = useState<{ lines: Array<{ title: string; qty: number; unit: number; total: number }>; subtotal: number } | null>(null);
+    const [paymentMethod, setPaymentMethod] = useState<'stripe' | 'bank'>('stripe');
+    const [isProcessing, setIsProcessing] = useState(false);
+    const [selectedForModal, setSelectedForModal] = useState<Listing | null>(null);
+    const [showSingleModal, setShowSingleModal] = useState(false);
+    const [paymentsConfig, setPaymentsConfig] = useState<any>(null);
+    const { show } = useToast();
+    const [lastInvoice, setLastInvoice] = useState<{ id: string; amount?: number } | null>(null);
+
+    useEffect(() => {
+        let mounted = true;
+        // Fetch proposals, listings and payments config in parallel
+        Promise.all([apiService.getProposals(), apiService.getListings(), apiService.getPaymentsConfig()])
+            .then(async ([p, l, pc]) => {
+                if (!mounted) return;
+                setProposals(p || []);
+                setListings(l || []);
+                setPaymentsConfig(pc || {});
+                // Fetch availability for each proposal (best-effort). Use admin-ajax endpoint exposed by shortcode.
+                try {
+                    const ids = (p || []).map((it: any) => Number(it.id)).filter((id: number) => id && id > 0);
+                    const availMap: Record<number, any> = {};
+                    await Promise.all(ids.map(async (id) => {
+                        try {
+                            const a = await apiService.getProposalAvailability(Number(id));
+                            availMap[id] = a || {};
+                        } catch (e) {
+                            // ignore per-proposal failures
+                        }
+                    }));
+                    if (mounted) setProposalAvail(availMap);
+                    // Fetch secondary listings per-proposal (normalized fields)
+                    try {
+                        const sec: Listing[] = [];
+                        await Promise.all(ids.map(async (id) => {
+                            try {
+                                const s = await apiService.getProposalSecondaryListings(Number(id));
+                                if (Array.isArray(s) && s.length > 0) sec.push(...s as Listing[]);
+                            } catch (e) {
+                                // ignore per-proposal secondary listings failures
+                            }
+                        }));
+                        if (mounted) setSecondaryListings(sec);
+                        // Merge server-normalized secondary listings into the main listings array so search shows authoritative data
+                        try {
+                            const base = (l || []).slice();
+                            const byId: Record<string, any> = {};
+                            base.forEach((it: any) => { if (it && it.id !== undefined) byId[String(it.id)] = { ...it }; });
+                            (sec || []).forEach((s: any) => {
+                                if (!s || s.id === undefined) return;
+                                const sid = String(s.id);
+                                const existing = byId[sid] || {};
+                                // Prefer server-normalized fields from secondary listing
+                                const merged = { ...existing, ...s };
+                                // Normalize price field names to match client expectations
+                                merged.price = merged.price || merged.price_per_share || merged.unit_price || merged.price_per_share;
+                                merged.price_per_share = merged.price_per_share || merged.unit_price || merged.price;
+                                merged.seller_display_name = merged.seller_display_name || merged.sellerName || merged.seller_name || '';
+                                byId[sid] = merged;
+                            });
+                            const mergedArray = Object.keys(byId).map(k => byId[k]);
+                            if (mounted) setListings(mergedArray as Listing[]);
+                        } catch (e) {
+                            // ignore merge errors
+                        }
+                    } catch (e) {
+                        // ignore
+                    }
+                } catch (e) {
+                    // ignore
+                }
+
+                // Build seller name map from server-provided fields to avoid extra REST calls
+                try {
+                    const combinedArr = [ ...(l || []), ...(sec || []) ];
+                    const map: Record<number, string> = {};
+                    combinedArr.forEach((it: any) => {
+                        const sid = Number(it?.seller_user_id || it?.seller_id || 0);
+                        if (!sid) return;
+                        if (!map[sid]) {
+                            map[sid] = String(it?.seller_display_name || it?.sellerName || it?.seller_name || sid);
+                        }
+                    });
+                    if (mounted) setSellerNames(map);
+                } catch (e) {
+                    // ignore seller name build failures
+                }
+            })
+            .catch(e => console.error('Failed to load purchase page data', e))
+            .finally(() => { if (mounted) setLoading(false); });
+        return () => { mounted = false; };
+    }, []);
+
+    const filtered = useMemo(() => {
+        let out = listings.slice();
+        if (search) {
+            const q = search.toLowerCase();
+            out = out.filter(l => (l.title || '').toLowerCase().includes(q) || (l.summary || '').toLowerCase().includes(q));
+        }
+        if (onlyAvailable) {
+            out = out.filter(l => getAvailable(l) > 0);
+        }
+        out.sort((a, b) => {
+            if (sortKey === 'price') return getListingPrice(a) - getListingPrice(b);
+            if (sortKey === 'availability') return getAvailable(b) - getAvailable(a);
+            return String(a.title || '').localeCompare(String(b.title || ''));
+        });
+        return out;
+    }, [listings, search, onlyAvailable, sortKey]);
+
+    const cartItems = useMemo(() => Object.values(cart), [cart]);
+    const subtotal = useMemo(() => cartItems.reduce((s, it) => s + (getListingPrice(it.listing) * it.quantity), 0), [cartItems]);
+
+    const updateQty = (listing: Listing, qty: number) => {
+        setCart(prev => {
+            const copy = { ...prev };
+            if (!qty || qty <= 0) {
+                delete copy[Number(listing.id)];
+            } else {
+                copy[Number(listing.id)] = { listing, quantity: qty };
+            }
+            return copy;
+        });
+    };
+
+    const addToCart = (listing: Listing, qty = 1) => updateQty(listing, (cart[Number(listing.id)]?.quantity || 0) + qty);
+
+    const handlePreview = () => {
+        const lines = cartItems.map(ci => {
+            const unit = getNumber(ci.listing, ['price', 'ask_price']);
+            return { title: ci.listing.title, qty: ci.quantity, unit, total: unit * ci.quantity };
+        });
+        setPreviewInvoice({ lines, subtotal: lines.reduce((s, l) => s + l.total, 0) });
+    };
+
+    const handleCheckout = async () => {
+        if (cartItems.length === 0) return;
+        setIsProcessing(true);
+        try {
+            const createdInvoices: any[] = [];
+            // For each cart item, record purchase on server. This mirrors web behavior where each line may create invoices/records.
+            for (const item of cartItems) {
+                if (paymentMethod === 'stripe') {
+                    // Create a payment intent per item and simulate confirmation (PurchaseModal does confirmation flow for single items)
+                    const { clientSecret } = await apiService.createStripeIntent(Number(item.listing.id), item.quantity);
+                    // Simulate confirmation step (Stripe.js would confirm the intent in a real app)
+                    await new Promise(r => setTimeout(r, 600));
+                    const paymentPayload = { paymentIntentId: String(clientSecret || '').split('_secret_')[0] };
+                    const res = await apiService.recordPurchase(Number(item.listing.id), item.quantity, 'stripe', paymentPayload);
+                    if ((res as any).newInvoice) createdInvoices.push((res as any).newInvoice);
+                    else createdInvoices.push(res);
+                } else {
+                    const res = await apiService.recordPurchase(Number(item.listing.id), item.quantity, 'bank', {});
+                    if ((res as any).newInvoice) createdInvoices.push((res as any).newInvoice);
+                    else createdInvoices.push(res);
+                }
+            }
+
+            // Clear cart
+            setCart({});
+
+            // If invoices were created, navigate user to payments/invoices view and show toast/link
+            if (createdInvoices.length > 0) {
+                const first = createdInvoices[0];
+                const invoiceId = String((first && (first.id || first.invoice_id || first.invoice || first.number)) || '');
+                const invoiceAmount = (first && (first.amount || first.total_amount || first.total)) ? Number(first.amount || first.total_amount || first.total) : undefined;
+                // Show success toast
+                try { show(`Invoice #${invoiceId} created`, 'success'); } catch (e) { /* ignore if toast unavailable */ }
+                setLastInvoice({ id: invoiceId, amount: invoiceAmount });
+                // Let parent handle navigation if provided, otherwise navigate back
+                if (onPurchaseSuccess) onPurchaseSuccess(invoiceId);
+                else navigateBack();
+            } else {
+                navigateBack();
+            }
+        } catch (e: any) {
+            console.error('Checkout failed', e);
+            alert((e && (e.message || e)) || 'Purchase failed');
+        } finally {
+            setIsProcessing(false);
+        }
+    };
+
+    const handleSingleSuccess = (newInvoice: Invoice) => {
+        setShowSingleModal(false);
+        setSelectedForModal(null);
+        const invoiceId = String((newInvoice as any).id || (newInvoice as any).invoice_id || '');
+        try { show(`Invoice #${invoiceId} created`, 'success'); } catch (e) {}
+        setLastInvoice({ id: invoiceId, amount: Number((newInvoice as any).amount || (newInvoice as any).total || 0) });
+        if (onPurchaseSuccess) onPurchaseSuccess(invoiceId);
+        else navigateBack();
+    };
+
+    if (loading) return <Spinner />;
+
+    return (
+        <div className="space-y-4">
+            <div className="flex items-center justify-between">
+                <h1 className="text-2xl font-semibold">Purchase Shares</h1>
+                <div>
+                    <Button variant="secondary" onClick={navigateBack}>Back</Button>
+                </div>
+            </div>
+
+            <div className="space-y-4">
+                {/* Proposals and secondary market removed — search-only view requested */}
+
+                <div className="grid grid-cols-1 lg:grid-cols-1 gap-6">
+                    <div className="lg:col-span-1 space-y-4">
+                        <Card className="p-4">
+                            <div className="flex items-center space-x-3 mb-3">
+                                <input aria-label="Search listings" placeholder="Search listings" value={search} onChange={(e) => setSearch(e.target.value)} className="im-input flex-1" />
+                                <label className="flex items-center space-x-2"><input type="checkbox" checked={onlyAvailable} onChange={(e) => setOnlyAvailable(e.target.checked)} /> <span>Only available</span></label>
+                                <label className="sr-only" htmlFor="ps-sort">Sort listings</label>
+                                <select id="ps-sort" value={sortKey} onChange={(e) => setSortKey((e.target.value as any))} className="im-select">
+                                    <option value="price">Sort by price</option>
+                                    <option value="availability">Sort by availability</option>
+                                    <option value="title">Sort by title</option>
+                                </select>
+                            </div>
+                        </Card>
+                    </div>
+                </div>
+
+            </div>
+
+            {previewInvoice && (
+                <Card>
+                    <h3 className="font-semibold mb-2">Invoice Preview</h3>
+                    <div className="space-y-2">
+                        {previewInvoice.lines.map((l, idx) => (
+                            <div key={idx} className="flex justify-between">
+                                <div>{l.qty} × {l.title}</div>
+                                <div>{currencyFormatter(l.total, paymentsConfig?.currency || 'USD')}</div>
+                            </div>
+                        ))}
+                        <div className="flex justify-between font-semibold mt-2"><div>Total</div><div>{currencyFormatter(previewInvoice.subtotal, paymentsConfig?.currency || 'USD')}</div></div>
+                    </div>
+                </Card>
+            )}
+
+            {showSingleModal && selectedForModal && (
+                <PurchaseModal
+                    listing={selectedForModal}
+                    onClose={() => { setShowSingleModal(false); setSelectedForModal(null); }}
+                    onSuccess={handleSingleSuccess}
+                />
+            )}
+        </div>
+    );
+};
+
+export default PurchaseSharesScreen;

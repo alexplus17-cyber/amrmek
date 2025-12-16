@@ -1,0 +1,5 @@
+{
+  "name": "Investor Network",
+  "description": "A web application for the Investor Network platform, allowing applicants, members, and administrators to manage investments, applications, and community activities.",
+  "requestFramePermissions": []
+}

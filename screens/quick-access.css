@@ -1,0 +1,41 @@
+.quick-access-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.quick-access-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 12px;
+  border-radius: 8px;
+  background: var(--card-bg, #fff);
+  box-shadow: 0 1px 2px rgba(16,24,40,0.04);
+  transition: transform .12s ease, box-shadow .12s ease;
+  cursor: pointer;
+}
+.quick-access-card:focus,
+.quick-access-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(16,24,40,0.08);
+  outline: none;
+}
+
+.quick-access-card .icon {
+  width: 28px;
+  height: 28px;
+  color: var(--primary-600, #2563eb);
+}
+.quick-access-card .title {
+  font-weight: 600;
+  margin-top: 8px;
+}
+.quick-access-card .desc {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+@media (min-width: 768px) {
+  .quick-access-grid { grid-template-columns: repeat(4, 1fr); }
+}

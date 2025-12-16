@@ -23,15 +23,15 @@ jobs:
       - name: Cache node modules
         uses: actions/cache@v4
         with:
-          path: mobile/node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('mobile/package-lock.json') }}
+          path: investor-network-mobile/mobile/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('investor-network-mobile/mobile/package-lock.json') }}
 
       - name: Install mobile dependencies
-        working-directory: mobile
+        working-directory: investor-network-mobile/mobile
         run: npm ci
 
       - name: Prebuild Android (expo prebuild)
-        working-directory: mobile
+        working-directory: investor-network-mobile/mobile
         run: npx expo prebuild -p android --no-install
 
       - name: Setup Java 17
@@ -53,13 +53,13 @@ jobs:
 
       - name: Build Android Debug APK
         run: |
-          cd mobile/android
+          cd investor-network-mobile/mobile/android
           ./gradlew assembleDebug --no-daemon --stacktrace
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: android-debug-apk
-          path: mobile/android/app/build/outputs/apk/debug/*.apk
+          path: investor-network-mobile/mobile/android/app/build/outputs/apk/debug/*.apk
 
 # Re-run trigger: 2025-12-15T18:32:42.3069066-08:00

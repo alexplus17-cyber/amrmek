@@ -26,9 +26,30 @@ jobs:
           path: investor-network-mobile/mobile/node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('investor-network-mobile/mobile/package-lock.json') }}
 
+      - name: Show repository structure (debug)
+        run: |
+          echo "PWD: $(pwd)"
+          echo "Root listing:"
+          ls -la
+          echo "Checking investor-network-mobile/mobile:" 
+          if [ -d investor-network-mobile/mobile ]; then
+            echo "FOUND: investor-network-mobile/mobile"
+            ls -la investor-network-mobile/mobile | sed -n '1,200p'
+          else
+            echo "MISSING: investor-network-mobile/mobile"
+          fi
+
       - name: Install mobile dependencies
-        working-directory: investor-network-mobile/mobile
-        run: npm ci
+        run: |
+          if [ -d investor-network-mobile/mobile ]; then
+            cd investor-network-mobile/mobile
+            echo "Running npm ci in $(pwd)"
+            npm ci
+          else
+            echo "ERROR: investor-network-mobile/mobile directory not found"
+            ls -la
+            exit 1
+          fi
 
       - name: Prebuild Android (expo prebuild)
         working-directory: investor-network-mobile/mobile
